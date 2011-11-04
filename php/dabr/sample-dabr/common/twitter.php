@@ -923,7 +923,7 @@ function twitter_update() {
             $reply_to_id = (string) $_POST['in_reply_to_id'];
         }
 
-    	$response = post_twtmore_tweet("blabla", $status, $reply_to_id);
+    	$response = post_twtmore_tweet(user_current_username(), $status, $reply_to_id);
 
     	if (!$response) {
     		
@@ -2054,7 +2054,7 @@ function is_64bit() {
  * @return StdClass Object or FALSE
  *
  */
-function post_twtmore_tweet($username, $tweet, $reply_to_user = null, $reply_to_tweet_id = null)
+function post_twtmore_tweet($username, $tweet, $reply_to_tweet_id = null)
 {
 	
 	// Formulate the request
@@ -2065,9 +2065,8 @@ function post_twtmore_tweet($username, $tweet, $reply_to_user = null, $reply_to_
 	);
 	
 	// If reply
-	if ($reply_to_user && $reply_to_tweet_id)
+	if ($reply_to_tweet_id)
 	{
-		$request['reply_to_user'] = $reply_to_user;
 		$request['reply_to_tweet'] = $reply_to_tweet_id;
 	}
 	
