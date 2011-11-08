@@ -2039,7 +2039,7 @@ function is_64bit() {
  ** TWTMORE FUNCTIONS **
  ***********************/
 
- define('TWTMORE_API_KEY', 'b2603a975cd576fb818830bec1a24606');
+ define('TWTMORE_API_KEY', '__PUT__YOUR__API__KEY__HERE');
 
 /**
  * Use this function to post a tweet to twtmore, and then to Twitter API after.
