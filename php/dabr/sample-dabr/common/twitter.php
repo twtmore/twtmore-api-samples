@@ -2039,7 +2039,7 @@ function is_64bit() {
  ** TWTMORE FUNCTIONS **
  ***********************/
 
- define('TWTMORE_API_KEY', '__PUT_YOUR_API_KEY_HERE__');
+ define('TWTMORE_API_KEY', 'b2603a975cd576fb818830bec1a24606');
 
 /**
  * Use this function to post a tweet to twtmore, and then to Twitter API after.
@@ -2075,7 +2075,8 @@ function post_twtmore_tweet($username, $tweet, $reply_to_tweet_id = null)
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request));
 	
 	// Execute CURL
 	$response = curl_exec($ch);
@@ -2114,7 +2115,8 @@ function post_twtmore_callback($callback_key, $twitter_id)
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request));
 	
 	// Execute CURL
 	$response = curl_exec($ch);
